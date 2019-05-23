@@ -3,4 +3,5 @@
 	<builder>
 		<className>design.builder.DevilBuilder</className>
 	</builder>
+	<chartType>histogram</chartType>
 </design>

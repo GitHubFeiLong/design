@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- 具体扩充类：抽象类的子类 -->
+	<className>design.bridge.JPGImage</className>
+	<!-- 具体实现类：实现类接口的子类 -->
+	<className>design.bridge.WindowsImp</className>
+</config>

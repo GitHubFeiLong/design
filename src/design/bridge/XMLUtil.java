@@ -1,4 +1,4 @@
-package design.builder;
+package design.bridge;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,19 +14,32 @@ import org.xml.sax.SAXException;
 
 public class XMLUtil {
 
-	public static Object getBean() {
+	public static Object getBean(String args) {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			File file = new File("src/design/config.xml");
+			File file = new File("src/design/bridge/config.xml");
 			Document document = builder.parse(file);
+			NodeList n1 = null;
+			Node classNode = null;
+			String cName = null;
 			
-			NodeList n1 = document.getElementsByTagName("className");
-			Node classNode = n1.item(0).getFirstChild();
-			String cNmae = classNode.getNodeValue();
-			Class<?> c = Class.forName(cNmae);
-			Object object = c.newInstance();
-			return object;
+			n1 = document.getElementsByTagName("className");
+			
+			// 获取第一个包含类名的节点，即扩充抽象类
+			if (args.equals("image")) {
+				classNode = n1.item(0).getFirstChild();
+			}
+			// 获取第二个包含类名的节点，即具体实现类
+			if (args.equals("os")) {
+				classNode = n1.item(1).getFirstChild();
+			}
+			
+			cName = classNode.getNodeValue();
+			// 通过类名生成实例对象并将其返回
+			Object o = Class.forName(cName).newInstance();
+			
+			return o;
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (SAXException e) {
@@ -50,3 +63,4 @@ public class XMLUtil {
 		
 	}
 }
+

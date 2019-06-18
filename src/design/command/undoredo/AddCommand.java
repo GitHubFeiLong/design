@@ -10,56 +10,60 @@ import java.util.List;
  * @Date 2019/6/17 19:50
  */
 public class AddCommand extends AbstractCommand {
-	private Adder adder = new Adder();  // 维持一个接收请求对象的引用
-
-	private int value;  // 为了得到加法中的参数值
-
-	private int index = 1;  // 记录历史记录表的下标
-	public List<Integer> lists = new ArrayList<Integer>();     // 装历史记录
-
-	{
-		lists.add(0);
-	}
-
+	private Adder adder = new Adder();
+	public static ArrayList<Integer> history = new ArrayList<Integer>();   // 装历史结果
+	
+	private boolean flag = false;   // 开关调用撤销undo方法为true。
+	private boolean boo = false;    // 开关：已经撤回到原始状态，再次撤销不添加历史记录
+	private int count = 0;  // 用于记录撤销的次数，中途运算就归0
 	/**
-	 * 实现抽象类声明的 execute() 方法，调用加法类Adder的add方法
-	 * @param value
-	 * @return
+	 * 执行运算
+	 * @Param [number]
+	 * @Return int
 	 */
 	@Override
-	public int execute(int value) {
-		System.out.println("index = " + index);
-		this.value = value;     // 将加数保留
-		int i = adder.add(value);
-		adder.result = i;
-		lists.add(i);   // 将结果装进‘历史记录’
-		System.out.println(lists);
-		this.index++;   // 下标加1
+	public int execute(int number) {
+		int i = adder.add(number);
+		AddCommand.history.add(i);
+		flag = false;
+		count = 0;
 		return i;
 	}
-
+	
 	/**
-	 * 实现一个抽象类声明的 undo() 方法,通过加一个相反数来实现加法的逆向操作
-	 * @return
+	 * 执行撤销
+	 * @Param []
+	 * @Return int
 	 */
 	@Override
 	public int undo() {
-		System.out.println("index = " + index);
-		int i = 0;
-		if (lists.size() <= 1){
-			i = adder.add(-value);
-		} else{
-			if(index < 2){
-				System.out.println("已经撤销不了了");
-				return 0;
+		int i= 0;
+		int len = AddCommand.history.size() -1; //索引
+		count ++;   // 执行撤销计次
+		
+		// 历史记录只有一条数据，或者是连续撤销到最初始的一条数据
+		if (len <= 0 || len < 2 * count -1){
+			// 防止重复添加0到历史记录
+			if (!boo){
+				System.out.println("最初状态");
+				AddCommand.history.add(i);
+			} else{
+				System.out.println("已经是最原始状态撤销失败！");
 			}
-			this.index -= 2;   // 下标减1
-			i = lists.get(this.index);
-			this.index += 1;    // 因为每次撤销后得到的值，都放进了数组，所以下标也会增加1
+			boo = true;
+			return 0;
 		}
-		adder.result = i;
-		lists.add(i);   // 将结果装进‘历史记录’
-		System.out.println(lists);
+		// 一次撤销
+		if (count == 1){
+			i = AddCommand.history.get(len -1);
+		}
+		// 连续撤销
+		if (flag){
+			i = AddCommand.history.get(len - (2 * count -1));
+		}
+		
+		AddCommand.history.add(i);
+		flag = true;
 		return i;
 	}
 }

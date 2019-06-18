@@ -10,22 +10,20 @@ import java.util.List;
  * @Date 2019/6/17 19:58
  */
 public class CalculatorForm {
-	private AbstractCommand command;    // 命令对象引用
-
-
-
+	private AbstractCommand command;
+	
 	public void setCommand(AbstractCommand command) {
 		this.command = command;
 	}
-
-	public void compute(int value){
+	
+	public void add(int value){
 		int i = command.execute(value);
-		System.out.println("执行运算，运算结果：" + i);
+		System.out.println("执行加法后结果为：" + i);
 	}
-
 	public void undo(){
 		int i = command.undo();
-		System.out.println("执行撤销，运算结果：" + i);
+		// 将上次结果值改为撤销后的值
+		Adder.num = i;
+		System.out.println("执行撤销后结果为：" + i);
 	}
-
 }

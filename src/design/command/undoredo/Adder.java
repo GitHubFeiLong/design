@@ -7,10 +7,9 @@ package design.command.undoredo;
  * @Date 2019/6/17 19:48
  */
 public class Adder {
-	private int num = 0;    // 定义初始值为0
-	public int result; // 每次处理后的结果；
+	public static int num = 0;
 	public int add(int value){
-		result += value;
-		return result;
+		Adder.num += value;
+		return Adder.num;
 	}
 }

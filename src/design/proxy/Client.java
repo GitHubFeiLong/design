@@ -1,6 +1,7 @@
 package design.proxy;
 
 /**
+ * 代理模式
  * @ClassName Client
  * @Description TODO
  * @Author msi

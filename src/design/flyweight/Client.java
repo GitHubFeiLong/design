@@ -1,6 +1,7 @@
 package design.flyweight;
 
 /**
+ * 享元模式
  * @ClassName Client
  * @Description TODO
  * @Author msi

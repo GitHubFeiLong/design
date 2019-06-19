@@ -1,5 +1,9 @@
 package design.singleton;
-
+/**
+ * 单例模式
+ * @author msi
+ * @date 2019年6月19日
+ */
 public class Client {
 	public static void main(String[] args) {
 		// 创建4个LoadBalancer

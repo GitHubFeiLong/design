@@ -1,6 +1,7 @@
 package design.command;
 
 /**
+ * 命令模式
  * @ClassName Client
  * @Description TODO 为了用户使用方便,某系统提供了一系列功能键,
  * TODO 用户可以自定义功能键的功能,例如功能键 FunctionButton可以用于退出系统(

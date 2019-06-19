@@ -1,6 +1,7 @@
 package design.chainofresponsibility;
 
 /**
+ * 职责链模式（责任链模式）
  * @ClassName Client
  * @Description TODO
  * @Author msi

@@ -1,5 +1,9 @@
 package design.composite;
-
+/**
+ * 组合模式（整体部分模式）
+ * @author msi
+ * @date 2019年6月19日
+ */
 public class Client {
 	public static void main(String [] args) {
 		// 针对抽象构件编程

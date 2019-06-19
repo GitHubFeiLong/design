@@ -1,7 +1,11 @@
 package design.prototype;
 
 import java.io.IOException;
-
+/**
+ * 原型模式
+ * @author msi
+ * @date 2019年6月19日
+ */
 public class Client {
 	public static void main(String [] args) throws ClassNotFoundException, IOException {
 		WeeklyLog log_previous,log_new;

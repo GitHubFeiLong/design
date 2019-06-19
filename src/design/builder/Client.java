@@ -1,6 +1,7 @@
 package design.builder;
 
 /**
+ * 构建者模式
  * Client:客户端测试类
  * @author msi
  * @date 2019年5月20日

@@ -1,5 +1,9 @@
 package design.decorator;
-
+/**
+ * 装饰模式
+ * @author msi
+ * @date 2019年6月19日
+ */
 public class Client {
 	public static void main(String [] args) {
 		// 1.使用抽象构件类定义全部对象

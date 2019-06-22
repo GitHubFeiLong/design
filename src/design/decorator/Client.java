@@ -1,6 +1,7 @@
 package design.decorator;
 /**
- * 装饰模式
+ * 装饰模式（Decorator Pattern）:动态的给一个对象增加一些额外的职责，就扩展功能而言，装饰模式提供了一种
+ * 比使用子类更加灵活的替代方案。
  * @author msi
  * @date 2019年6月19日
  */
@@ -23,7 +24,7 @@ public class Client {
 		ScrollBarDecorator sb = new ScrollBarDecorator(o1);
 		BlackBorderDecorator bb = new BlackBorderDecorator(sb);
 		bb.setBlackBorder();
-//		bb.display();
+		bb.display();
 		
 	}
 

@@ -1,5 +1,8 @@
 package design.decorator;
 
+/**
+ * 黑色边框装饰类，充当具体装饰类
+ */
 public class BlackBorderDecorator extends ComponentDecorator{
 
 	public BlackBorderDecorator(Component component) {

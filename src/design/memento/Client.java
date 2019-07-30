@@ -33,7 +33,10 @@ public class Client {
 		System.out.println(mc.mementoList);
 		undo(chess,index);
 		System.out.println("index = " + index);
-
+		
+		undo(chess,index);
+		redo(chess,index);
+		undo(chess,index);
 	}
 
 	/**
@@ -45,6 +48,7 @@ public class Client {
 		mc.setMemento(chessman.save());
 		index ++;
 		display(chessman);
+		System.out.println("list = " + mc.mementoList);
 	}
 
 	/**
@@ -57,6 +61,8 @@ public class Client {
 		index --;
 		chessman.restore(mc.getMemento(i - 1));
 		display(chessman);
+		System.out.println("list = " + mc.mementoList);
+		
 	}
 
 	/**

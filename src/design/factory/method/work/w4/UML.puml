@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Car
+abstract class AbstractFactory
+interface BMWCar
+class BenzCar
+class BMWFactory
+class BenzFactory
+
+Car <|-- BMWCar
+Car <|-- BenzCar
+
+class Car {
+    color:String
+    int size
+    getSize()
+    setSize(size:int)
+}
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Computer {
+    String cpu
+    String memoryBank
+    String hardDisk
+    String mainEngine
+    String display
+}
+abstract class ComputerBuilder {
+    Computer computer;
+    void buildCpu();
+    void buildMemoryBank();
+    void buildHardDisk();
+    void buildMainEngine();
+    void buildDisplay();
+    Computer createComputer();
+    boolean isNeedDisplay();
+}
+
+class NotebookComputerBuilder {
+    void buildCpu();
+    void buildMemoryBank();
+    void buildHardDisk();
+    void buildMainEngine();
+    void buildDisplay();
+}
+
+class DesktopComputerBuilder {
+    void buildCpu();
+    void buildMemoryBank();
+    void buildHardDisk();
+    void buildMainEngine();
+    void buildDisplay();
+}
+
+class ServerComputerBuilder {
+    void buildCpu();
+    void buildMemoryBank();
+    void buildHardDisk();
+    void buildMainEngine();
+    void buildDisplay();
+    boolean isNeedDisplay();
+}
+
+class ComputerDirector {
+    Computer construct(ComputerBuilder builder)
+}
+
+ComputerBuilder <|-- NotebookComputerBuilder
+ComputerBuilder <|-- DesktopComputerBuilder
+ComputerBuilder <|-- ServerComputerBuilder
+Computer <-- ComputerBuilder
+
+ComputerBuilder <.. ComputerDirector
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/class-diagram
+class 抽象原型类{
+    copy()
+}
+
+class 具体原型类1{
+    copy()
+}
+class 具体原型类2{
+    copy()
+}
+
+class 公文管理器 {
+    Set<抽象原型类> list
+    get(抽象原型类 type)
+}
+抽象原型类 <|-- 具体原型类1
+抽象原型类 <|-- 具体原型类2
+抽象原型类 "n" <-- "1" 公文管理器
+抽象原型类 <.. 公文管理器
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class DataChart{
+    编号
+    颜色
+    数据
+    clone()
+}
+interface Cloneable
+interface Serializable
+
+Object <|-- DataChart
+Serializable <|.. DataChart
+Cloneable <|.. DataChart
+
+@enduml

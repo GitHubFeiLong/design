@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class DatabasePool {
+    - {static} DatabasePool pool
+    - Set<Connector> connectors
+    - DatabasePool()
+    + {static} DatabasePool getInstance()
+    + getConnector()
+    + addConnector(Connector connector)
+
+}
+
+class Connector {
+    - host
+    - port
+    - username
+    - password
+    - otherParameter
+}
+
+DatabasePool o.. Connector
+
+@enduml

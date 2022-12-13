@@ -1,5 +1,7 @@
 package design.strategy.example.convert;
 
+import java.io.*;
+
 /**
  * 类描述：
  *
@@ -7,7 +9,7 @@ package design.strategy.example.convert;
  * @version 1.0
  * @date 2022/12/12 16:20
  */
-public class Cell {
+public class Cell implements ICloneable<Cell> {
     private int row;
     private int column;
     private String contents;
@@ -50,4 +52,6 @@ public class Cell {
                 ", contents='" + contents + '\'' +
                 '}';
     }
+
+
 }

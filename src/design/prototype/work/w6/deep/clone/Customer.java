@@ -52,20 +52,28 @@ public class Customer implements Cloneable, Serializable {
 
     @Override
     protected Customer clone() throws CloneNotSupportedException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(this);
 
-            // 读
-            byte[] bytes = baos.toByteArray();
-            ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-            ObjectInputStream ois = new ObjectInputStream(bais);
+        ObjectInputStream ois = null;
+        try(
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ObjectOutputStream oos = new ObjectOutputStream(baos);
+        ) {
+            // 写数据
+            oos.writeObject(this);
+            ois = new ObjectInputStream(new ByteArrayInputStream(baos.toByteArray()));
+            // 读数据
             return (Customer)ois.readObject();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
 }

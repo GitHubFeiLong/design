@@ -31,20 +31,28 @@ public class DataChart implements Serializable, Cloneable {
     @Override
     protected DataChart clone() throws CloneNotSupportedException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
+        ByteArrayInputStream bais;
+        ObjectInputStream ois = null;
+        try (
+                ObjectOutputStream oos = new ObjectOutputStream(baos);
+        ) {
+
             // 写出
             oos.writeObject(this);
             // 从输出流中读取出来
-            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            try {
-                return (DataChart)ois.readObject();
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        } catch (IOException e) {
+            bais = new ByteArrayInputStream(baos.toByteArray());
+            ois = new ObjectInputStream(bais);
+            return (DataChart)ois.readObject();
+        } catch (Exception e) {
             throw new RuntimeException(e);
+        } finally {
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
 

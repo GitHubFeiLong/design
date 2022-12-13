@@ -1,20 +1,20 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-interface QueueConvertStrategy{
+interface QueueConvertStrategy<T>{
     convert(T data) : T
 }
 
-class ListQueueConvertStrategy{
+class ListQueueConvertStrategy<T>{
     convert(T data) : T
 }
 
-class Context {
-    QueueConvertStrategy strategy
+class Context<T> {
+    QueueConvertStrategy<T> strategy
     setStrategy(Strategy strategy)
     execute(T data)
 }
 
 QueueConvertStrategy <|.. ListQueueConvertStrategy
-QueueConvertStrategy <.. Context
+QueueConvertStrategy <.. Context :  "use"
 @enduml

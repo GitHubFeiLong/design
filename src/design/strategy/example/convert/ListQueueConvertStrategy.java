@@ -1,6 +1,5 @@
 package design.strategy.example.convert;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,12 +37,18 @@ public class ListQueueConvertStrategy implements QueueConvertStrategy<List>{
         Stream.iterate(0, j -> j+1).limit(columnSize).forEach(j -> {
             // data的第j列数据扁平化
             List collect = (List) data.stream()
-                    .map(m -> ((List)m).get(j))
+                    .map(m -> {
+                        Object o = ((List) m).get(j);
+                        // 深度克隆
+                        if (o instanceof ICloneable) {
+                            return ((ICloneable)o).deepClone();
+                        }
+                        return o;
+                    })
                     .collect(Collectors.toList());
 
             convertedRows.add(collect);
         });
-
 
         return convertedRows;
     }

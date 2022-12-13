@@ -1,18 +1,18 @@
 @startuml
 'https://plantuml.com/class-diagram
-
+Title "二维集合的行列转换"
 interface QueueConvertStrategy<T>{
-    convert(T data) : T
+    # convert(T data) : T
 }
 
 class ListQueueConvertStrategy<T>{
-    convert(T data) : T
+    + convert(T data) : T
 }
 
 class Context<T> {
-    QueueConvertStrategy<T> strategy
-    setStrategy(Strategy strategy)
-    execute(T data)
+    - QueueConvertStrategy<T> strategy
+    + setStrategy(Strategy strategy)
+    + execute(T data)
 }
 
 QueueConvertStrategy <|.. ListQueueConvertStrategy

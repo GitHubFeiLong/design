@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title '双向设配器'
+
+class Adapter{
+    - Cat cat
+    - Dog dog
+    + void cry()
+    + void catchMouse()
+}
+
+class Cat {
+    + void catchMouse()
+}
+
+class Dog {
+    + void cry()
+}
+
+Cat <.. Adapter
+Dog <.. Adapter
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title 播放器-适配器模式
+
+class Target{
+    + void play()
+}
+
+class WindowsMediaPlayerAdapter extends Target{
+    - WindowsMediaPlayerAdaptee windowsMediaPlayer
+    + WindowsMediaPlayerAdapter (WindowsMediaPlayerAdaptee adaptee)
+    + void play()
+}
+
+class RealPlayerAdapter extends Target{
+    - RealPlayerAdaptee windowsMediaPlayer
+    + RealPlayerAdapter (RealPlayerAdaptee adaptee)
+    + void play()
+}
+
+class WindowsMediaPlayerAdaptee{
+    + void windowsPlay()
+}
+class RealPlayerAdaptee{
+    + void RealPlay()
+}
+
+WindowsMediaPlayerAdaptee <.. WindowsMediaPlayerAdapter
+RealPlayerAdaptee <.. RealPlayerAdapter
+
+@enduml

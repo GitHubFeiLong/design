@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title 适配器模式
+
+abstract class CarController {
+	+ move()
+	+ phonate();
+	+ twinkle();
+}
+
+note top of CarController: 目标抽象类
+
+note left of CarController::"move()"
+     移动
+end note
+note left of CarController::"phonate()"
+     发出声音
+end note
+note left of CarController::"twinkle()"
+     灯光闪烁
+end note
+
+class PoliceSound{
+    alarmSound()
+}
+note right of PoliceSound: 适配者类
+class PoliceLamp{
+    alarmLamp()
+}
+note left of PoliceLamp: 适配者类
+
+class PoliceCarAdapter extends CarController{
+    - PoliceSound sound;
+    - PoliceLamp lamp;
+    + phonate();
+    + twinkle();
+}
+note left of PoliceCarAdapter: 适配器类
+
+PoliceCarAdapter <.. PoliceSound
+PoliceCarAdapter <.. PoliceLamp
+
+@enduml

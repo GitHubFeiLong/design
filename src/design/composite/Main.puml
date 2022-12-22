@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title 组合模式
+
+abstract class AbstractFile{
+    add()
+    remove()
+    AbstractFile getChild(int i)
+    killVirus()
+}
+note top of AbstractFile: 抽象构建类
+
+class Folder extends AbstractFile{
+    List<AbstractFile>fileList
+    String name
+
+    add()
+    remove()
+    AbstractFile getChild(int i)
+    killVirus()
+}
+note top of Folder: 容器构建
+
+class ImageFile extends AbstractFile{
+    String name
+    add()
+    remove()
+    AbstractFile getChild(int i)
+    killVirus()
+}
+
+note top of ImageFile: 叶子构建
+class TextFile extends AbstractFile{
+    String name
+    add()
+    remove()
+    AbstractFile getChild(int i)
+    killVirus()
+}
+note top of TextFile: 叶子构建
+class VideoFile extends AbstractFile{
+    String name
+    add()
+    remove()
+    AbstractFile getChild(int i)
+    killVirus()
+}
+
+note top of VideoFile: 叶子构建
+@enduml

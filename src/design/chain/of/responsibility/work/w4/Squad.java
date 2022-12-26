@@ -1,8 +1,8 @@
-package design.chain.of.responsibility.work;
+package design.chain.of.responsibility.work.w4;
 
 /**
+ * 班长，具体处理者类
  * @ClassName Squad
- * @Description TODO 班长，具体处理者类
  * @Author msi
  * @Date 2019/6/16 14:02
  */

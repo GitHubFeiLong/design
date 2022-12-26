@@ -1,13 +1,13 @@
-package design.chain.of.responsibility.work;
+package design.chain.of.responsibility.work.w4;
 
 /**
+ * 营长类
  * @ClassName Platoon
- * @Description TODO 排长类
  * @Author msi
  * @Date 2019/6/16 14:05
  */
-public class Platoon extends Approver{
-	public Platoon(String name) {
+public class Battalion extends Approver{
+	public Battalion(String name) {
 		super(name);
 	}
 
@@ -17,9 +17,9 @@ public class Platoon extends Approver{
 	 */
 	@Override
 	public void giveOrder(Enemy enemy) {
-		if(enemy.getNumber() >=10 && enemy.getNumber() < 50){
+		if(enemy.getNumber() >=50 && enemy.getNumber() < 200){
 			// 处理请求
-			System.out.println("排长：" + this.name + "下达了作战指令");
+			System.out.println("营长：" + this.name + "下达了作战指令");
 		} else {
 			// 转发请求
 			this.approver.giveOrder(enemy);

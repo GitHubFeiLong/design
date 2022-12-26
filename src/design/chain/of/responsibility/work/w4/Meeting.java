@@ -1,8 +1,8 @@
-package design.chain.of.responsibility.work;
+package design.chain.of.responsibility.work.w4;
 
 /**
+ * 敌人数量大于了200，需要开会决策
  * @ClassName Meeting
- * @Description TODO 敌人数量大于了200，需要开会决策
  * @Author msi
  * @Date 2019/6/16 14:07
  */

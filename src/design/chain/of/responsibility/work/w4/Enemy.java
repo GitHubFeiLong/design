@@ -1,4 +1,4 @@
-package design.chain.of.responsibility.work;
+package design.chain.of.responsibility.work.w4;
 
 /**
  * @ClassName Enemy

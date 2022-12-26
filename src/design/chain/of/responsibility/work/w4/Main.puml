@@ -1,0 +1,49 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+class Enemy{
+    - number:int
+}
+
+abstract class Approver{
+    # name:String
+    # approver:Approver
+    # setApprover(approver:Approver)
+    # giveOrder(enemy:Enemy)
+}
+
+class Squad extends Approver{
+
+}
+class Platoon extends Approver{}
+class Battalion extends Approver{}
+class Meeting extends Approver{}
+
+Approver ..> Enemy
+
+note top of Enemy
+    敌人数量类
+end note
+
+note top of Approver
+    抽象处理者
+end note
+
+note bottom of Squad
+    班长（具体处理者）敌人数量<10
+end note
+
+note bottom of Platoon
+    排长类（具体处理者）10<=敌人数量<50
+end note
+
+note bottom of Battalion
+    营长类（具体处理者）50<=敌人数量<200
+end note
+
+note bottom of Meeting
+    开会决策类（具体处理者）200<=敌人数量
+end note
+
+@enduml

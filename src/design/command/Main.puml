@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Invoker{
+
+}
+
+
+abstract class Command{
+    # execute()
+}
+
+class ConcreteCommand extends Command{
+    + execute()
+}
+
+class Receiver{
+    + action()
+}
+
+ConcreteCommand "receiver" --> Receiver
+
+Invoker --o Command
+
+note left of Invoker
+    调用者
+end note
+
+note right of ConcreteCommand::execute
+  public void execute() {
+              receiver.action();
+      }
+end note
+
+
+@enduml
